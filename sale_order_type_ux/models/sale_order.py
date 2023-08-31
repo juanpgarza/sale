@@ -10,8 +10,6 @@ class SaleOrder(models.Model):
 
     type_id = fields.Many2one(
         tracking=True,
-        readonly=True,
-        states={'draft': [('readonly', False)], 'sent': [('readonly', False)]},
     )
 
     def _change_values_from_type(self):
