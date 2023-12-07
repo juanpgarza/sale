@@ -57,13 +57,13 @@ class SaleOrder(models.Model):
         if not order.is_expired:
             return super()._compute_is_expired()
 
-    def action_confirm(self):
-        self.ensure_one()
-        if self.is_expired:
-            raise UserError(_(
-                'You can not confirm this quotation as it was valid until'
-                ' %s! Please update validity.') % (self.validity_date))
-        return super().action_confirm()
+    # def action_confirm(self):
+    #     self.ensure_one()
+    #     if self.is_expired:
+    #         raise UserError(_(
+    #             'You can not confirm this quotation as it was valid until'
+    #             ' %s! Please update validity.') % (self.validity_date))
+    #     return super().action_confirm()
 
     def update_date_prices_and_validity(self):
         self.date_order = fields.Datetime.now()
