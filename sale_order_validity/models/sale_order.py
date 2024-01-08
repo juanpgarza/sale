@@ -67,6 +67,7 @@ class SaleOrder(models.Model):
 
     def update_date_prices_and_validity(self):
         self.date_order = fields.Datetime.now()
-        self.update_prices()
-        self.onchange_company()
+        self.recalculate_prices() # definido en sale_order_price_recalculation
+        # self.update_prices()
+        # self.onchange_company()
         return True

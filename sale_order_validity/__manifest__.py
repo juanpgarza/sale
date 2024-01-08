@@ -19,7 +19,7 @@
 ##############################################################################
 {
     'name': 'Sale Order Validity',
-    'version': "15.0.1.0.0",
+    'version': "15.0.1.1.0",
     'category': 'Sales & Purchases',
     'sequence': 14,
     'author': 'ADHOC SA',
@@ -29,6 +29,7 @@
     ],
     'depends': [
         'sale_ux',
+        "sale_order_price_recalculation", # (OCA - sale-workflow)
     ],
     'data': [
         'views/sale_order_view.xml',
