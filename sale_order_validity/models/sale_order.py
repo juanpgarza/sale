@@ -67,7 +67,15 @@ class SaleOrder(models.Model):
 
     def update_date_prices_and_validity(self):
         self.date_order = fields.Datetime.now()
-        self.recalculate_prices() # definido en sale_order_price_recalculation
-        # self.update_prices()
+        self.update_prices()
         # self.onchange_company()
+        return True
+
+    def update_prices(self):
+        # super().update_prices()
+        # sobre-escribo el update_prices del CORE (mod sale). Esta pensado para cuando se cambia la lista de precios y por defecto, borra los descuentos
+        # tengo que tener cuidado con los módulos que heredan al update_prices (y le agregan funcionalidad)
+        # ej. el mod sale_ux de adhoc le agrega un fix para los packs (no se si nos impacta)
+        self.recalculate_prices()
+        self.order_line._compute_purchase_price()
         return True

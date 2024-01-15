@@ -21,6 +21,8 @@ Sale Order Validity
 * If the validaty date is in the past it is not posible to validate the quotation.
 * A new button is created to reset the validity date and reset the prices of every line.
 
+* juanp/Pronto: se modificó para evitar que cuando se actualicen los precios se borren los descuentos que tenía aplicado el presupuesto. Se usa el módulo sale_order_price_recalculation de OCA
+
 Installation
 ============
 
