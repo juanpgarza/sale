@@ -12,9 +12,9 @@ class StockPicking(models.Model):
 
     def button_validate(self):
         msg = (
-            'If you use a sale type in the sale order related with invoice '
-            'policy "Block Reserve/Block Delivery", then every sale line must '
-            'be invoiced and paid before you can validate picking')
+            'Si utiliza un tipo de venta con política de facturación '
+            '"Antes de la entrega",entonces cada línea de venta '
+            'debe facturarse y pagarse antes de poder confirmar la orden de venta.')
         if any(
             self.sudo().filtered(
                 lambda x: x.sale_id.type_id.invoice_policy in ['prepaid', 'prepaid_block_delivery']
@@ -24,9 +24,9 @@ class StockPicking(models.Model):
 
     def action_assign(self):
         msg = (
-            'If you use a sale type in the sale order related with invoice'
-            ' policy "Prepaid - Block Reserve" , then every sale line must '
-            'be invoiced and paid before you can reserve qty to this picking')
+            'Si utiliza un tipo de venta con política de facturación '
+            '"Antes de la entrega",entonces cada línea de venta '
+            'debe facturarse y pagarse antes de poder confirmar la orden de venta.')
         prepaid_unpaid = self.sudo().filtered(
             lambda x: x.sale_id.type_id.invoice_policy ==
             'prepaid' and not x._check_sale_paid())
